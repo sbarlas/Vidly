@@ -6,6 +6,10 @@
 
 <h2>Customers</h2>
 <br/>
+@Html.ActionLink("Add customer", "New" , "Customers", null, new { @class="btn btn-primary"})
+<br/>
+<br />
+
 @if(Model.Count > 0)
 {
     <table class="table table-bordered table-hover">
@@ -15,7 +19,7 @@
         {
             <tr>
             
-            <td>@Html.ActionLink(customerItem.Name, "Details", "Customers", new { Id = customerItem.Id }, null)</td>
+            <td>@Html.ActionLink(customerItem.Name, "Edit", "Customers", new { Id = customerItem.Id }, null)</td>
                 <td>
                     @if (customerItem.DateOfBirth != null)
                     {
