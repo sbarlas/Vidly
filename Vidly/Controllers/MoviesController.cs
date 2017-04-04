@@ -24,22 +24,19 @@ namespace Vidly.Controllers
             {
                 Movie = movie,
                 Customers = customers
-            };
-
-
-
-            //  ViewData["Movie"] = movie;
-
-            //   ViewBag.Movie = movie;
+            };  
+         
 
 
             return View(viewModel);
 
-            //            return Content("Hello saqib");
+            //return Content("Hello saqib");
             //return HttpNotFound("Resource not found");
             //return new EmptyResult();
 
-           // return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+
+            //return RedirectToRoute(new { page = 1, sortBy = "name" });
         }
 
         public ActionResult Edit(int id)
@@ -47,25 +44,44 @@ namespace Vidly.Controllers
             return Content("id=" + id);
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-            {
-                pageIndex = 1;
-            }
-
-            if (String.IsNullOrEmpty(sortBy))
-            {
-                sortBy = "Name";
-
-            }
-
-            return Content(String.Format("Page inde = {0}&sortBy={1}", pageIndex, sortBy));
-        }
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
-        public ActionResult ByReleaseYear(int year , int month)
+        public ActionResult ByReleaseYear(int year, int month)
         {
             return Content(year + "/" + month);
+        }
+
+        public ActionResult Index()
+        {
+            var movies = GetStaticMovieList();
+
+            return View(movies);
+        }
+
+
+        [Route("movies/detail/{id}")]
+        public ActionResult Details(int id)
+        {
+            var movieItem = GetStaticMovieList().Find(x => x.Id == id);
+
+            if(movieItem == null)
+            {
+                return HttpNotFound("This movie does not exist");
+            }
+
+            return View(movieItem);
+
+        }
+
+        private List<Movie> GetStaticMovieList()
+        {
+            var movieList = new List<Movie>()
+            {
+                new Movie { Id=1, ReleaseDate= new DateTime(1989,2,3), Name="Die Hard" },
+                new Movie { Id=2,  ReleaseDate= new DateTime(2001,6,29), Name="Shrek" },
+                new Movie { Id=3,  ReleaseDate= new DateTime(1985,12,4), Name="Back to the Future" }
+            };
+
+            return movieList;
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model List<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Movies</h2>
+<br />
+@if (Model.Count > 0)
+{
+    <table cellspacing="3" border="1">
+        <tr><th>Movie Name</th><th>Release Date</th></tr>
+
+        @foreach (var movieItem in Model)
+        {
+            <tr>
+
+                <td>@Html.ActionLink(movieItem.Name, "Details", "Movies", new { Id = movieItem.Id }, null)</td>
+                <td>@String.Format("{0:dd MMM yyyy}", movieItem.ReleaseDate)</td>
+           
+            </tr>
+        }
+
+    </table>
+
+}
+else
+{
+    <text>There are no movies in the system</text>
+}
+
