@@ -228,6 +228,18 @@
     <Compile Include="Migrations\201704040918002_PopultaeMembershipTypesNames.Designer.cs">
       <DependentUpon>201704040918002_PopultaeMembershipTypesNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704041029040_CustomerAddedDOB.cs" />
+    <Compile Include="Migrations\201704041029040_CustomerAddedDOB.Designer.cs">
+      <DependentUpon>201704041029040_CustomerAddedDOB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704041054265_CustomerAddedageNotMapped.cs" />
+    <Compile Include="Migrations\201704041054265_CustomerAddedageNotMapped.Designer.cs">
+      <DependentUpon>201704041054265_CustomerAddedageNotMapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704041102141_CustomerDateOfBirthNullable.cs" />
+    <Compile Include="Migrations\201704041102141_CustomerDateOfBirthNullable.Designer.cs">
+      <DependentUpon>201704041102141_CustomerDateOfBirthNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -347,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704040918002_PopultaeMembershipTypesNames.resx">
       <DependentUpon>201704040918002_PopultaeMembershipTypesNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704041029040_CustomerAddedDOB.resx">
+      <DependentUpon>201704041029040_CustomerAddedDOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704041054265_CustomerAddedageNotMapped.resx">
+      <DependentUpon>201704041054265_CustomerAddedageNotMapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704041102141_CustomerDateOfBirthNullable.resx">
+      <DependentUpon>201704041102141_CustomerDateOfBirthNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,27 @@ namespace Vidly.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public int Age { get; set; }
+
+        public Nullable<DateTime> DateOfBirth { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+        public int Age
+        {
+            get
+            {
+                if (DateOfBirth != null)
+                {
+                    var today = DateTime.Today;
+                    var birthdate = (DateTime)DateOfBirth;
+                    var a = (today.Year * 100 + today.Month) * 100 + today.Day;
+                    var b = (birthdate.Year * 100 + birthdate.Month) * 100 + birthdate.Day;
+
+                    return (a - b) / 10000;
+                }
+
+                return -1;
+            }
+
+        }
 
         public bool IsSubscribedToNewsletter { get; set; }
         public bool IsActive { get; set; }
