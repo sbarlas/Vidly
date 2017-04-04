@@ -13,6 +13,7 @@ namespace Vidly.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Display(Name="Date of Birth")]
         public Nullable<DateTime> DateOfBirth { get; set; }
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public int Age
@@ -39,6 +40,7 @@ namespace Vidly.Models
 
         public MembershipType MembershipType { get; set; }
 
+        [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
     }
 
