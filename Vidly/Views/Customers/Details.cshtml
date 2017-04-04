@@ -6,3 +6,16 @@
 
 <h2>@Model.Name</h2>
 
+<ul>
+    <li>
+        Membership Type : @Model.MembershipType.MembershipName
+    </li>
+
+    @if (Model.DateOfBirth != null)
+    {
+        <li>
+            Date of Birth : @String.Format("{0:dd MMM yyyy}", Model.DateOfBirth) 
+            &nbsp;&nbsp;&nbsp;&nbsp;[Age: @Model.Age]
+        </li>
+    }
+</ul>

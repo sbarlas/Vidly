@@ -204,33 +204,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704040752011_InitialModel.cs" />
-    <Compile Include="Migrations\201704040752011_InitialModel.Designer.cs">
-      <DependentUpon>201704040752011_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201704041311089_InitialModel.cs" />
+    <Compile Include="Migrations\201704041311089_InitialModel.Designer.cs">
+      <DependentUpon>201704041311089_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704040811135_AddIsSubscribedToCustomer.cs" />
-    <Compile Include="Migrations\201704040811135_AddIsSubscribedToCustomer.Designer.cs">
-      <DependentUpon>201704040811135_AddIsSubscribedToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704040814436_AddMembershipType.cs" />
-    <Compile Include="Migrations\201704040814436_AddMembershipType.Designer.cs">
-      <DependentUpon>201704040814436_AddMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704040816160_PopulateMembershipTypes.cs" />
-    <Compile Include="Migrations\201704040816160_PopulateMembershipTypes.Designer.cs">
-      <DependentUpon>201704040816160_PopulateMembershipTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704040908046_MembershipTypeAddCol.cs" />
-    <Compile Include="Migrations\201704040908046_MembershipTypeAddCol.Designer.cs">
-      <DependentUpon>201704040908046_MembershipTypeAddCol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704040918002_PopultaeMembershipTypesNames.cs" />
-    <Compile Include="Migrations\201704040918002_PopultaeMembershipTypesNames.Designer.cs">
-      <DependentUpon>201704040918002_PopultaeMembershipTypesNames.cs</DependentUpon>
+    <Compile Include="Migrations\201704041312338_PopulateReferenceData.cs" />
+    <Compile Include="Migrations\201704041312338_PopulateReferenceData.Designer.cs">
+      <DependentUpon>201704041312338_PopulateReferenceData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -330,23 +315,11 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704040752011_InitialModel.resx">
-      <DependentUpon>201704040752011_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704041311089_InitialModel.resx">
+      <DependentUpon>201704041311089_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704040811135_AddIsSubscribedToCustomer.resx">
-      <DependentUpon>201704040811135_AddIsSubscribedToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704040814436_AddMembershipType.resx">
-      <DependentUpon>201704040814436_AddMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704040816160_PopulateMembershipTypes.resx">
-      <DependentUpon>201704040816160_PopulateMembershipTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704040908046_MembershipTypeAddCol.resx">
-      <DependentUpon>201704040908046_MembershipTypeAddCol.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704040918002_PopultaeMembershipTypesNames.resx">
-      <DependentUpon>201704040918002_PopultaeMembershipTypesNames.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704041312338_PopulateReferenceData.resx">
+      <DependentUpon>201704041312338_PopulateReferenceData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

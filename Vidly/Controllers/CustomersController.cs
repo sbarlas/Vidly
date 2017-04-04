@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,10 +11,24 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
+        private ApplicationDbContext _context;
+
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+        /// <summary>
+        /// Get cusotmers
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            var customerList = GetStaticCustomerList();
+            var customerList = _context.Customers.Include(m => m.MembershipType).ToList();
 
             return View(customerList);
         }
@@ -21,9 +36,8 @@ namespace Vidly.Controllers
         [Route("customers/details/{id}")]
         public ActionResult Details(int id)
         {
-            var customerList = GetStaticCustomerList();
-
-            var customer = customerList.Find(x => x.Id == id);
+            var customerList = _context.Customers.Include(m => m.MembershipType).ToList();
+            var customer = customerList.SingleOrDefault(x => x.Id == id);
 
             if(customer == null)
             {
@@ -32,15 +46,15 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
-        private List<Customer> GetStaticCustomerList()
-        {
-            var customerList = new List<Customer>()
-            {
-                new Customer { Id=1, Age=21, IsActive=true, Name="Sarah Smith" },
-                new Customer { Id=2, Age=25, IsActive=true, Name="Charlie Arnott" },
-            };
+        //private List<Customer> GetStaticCustomerList()
+        //{
+        //    var customerList = new List<Customer>()
+        //    {
+        //        new Customer { Id=1, Age=21, IsActive=true, Name="Sarah Smith" },
+        //        new Customer { Id=2, Age=25, IsActive=true, Name="Charlie Arnott" },
+        //    };
 
-            return customerList;
-        }
+        //    return customerList;
+        //}
     }
 }
