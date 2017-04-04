@@ -10,7 +10,7 @@
 @if (Model.Count > 0)
 {
     <table class="table table-bordered table-hover">
-        <tr><th>Movie Name</th><th>Release Date</th></tr>
+        <tr><th>Movie Name</th><th>Release Date</th><td>Genre</td></tr>
 
         @foreach (var movieItem in Model)
         {
@@ -18,6 +18,7 @@
 
                 <td>@Html.ActionLink(movieItem.Name, "Details", "Movies", new { Id = movieItem.Id }, null)</td>
                 <td>@String.Format("{0:dd MMM yyyy}", movieItem.ReleaseDate)</td>
+                <td>@movieItem.Genre.GenreName</td>
            
             </tr>
         }

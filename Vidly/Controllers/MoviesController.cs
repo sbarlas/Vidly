@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,17 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Movies
         public ActionResult Random()
         {
@@ -52,8 +64,8 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            var movies = GetStaticMovieList();
-
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
+           
             return View(movies);
         }
 
@@ -61,7 +73,9 @@ namespace Vidly.Controllers
         [Route("movies/detail/{id}")]
         public ActionResult Details(int id)
         {
-            var movieItem = GetStaticMovieList().Find(x => x.Id == id);
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
+
+            var movieItem = movies.Find(x => x.Id == id);
 
             if(movieItem == null)
             {
@@ -72,16 +86,16 @@ namespace Vidly.Controllers
 
         }
 
-        private List<Movie> GetStaticMovieList()
-        {
-            var movieList = new List<Movie>()
-            {
-                new Movie { Id=1, ReleaseDate= new DateTime(1989,2,3), Name="Die Hard" },
-                new Movie { Id=2,  ReleaseDate= new DateTime(2001,6,29), Name="Shrek" },
-                new Movie { Id=3,  ReleaseDate= new DateTime(1985,12,4), Name="Back to the Future" }
-            };
+        //private List<Movie> GetStaticMovieList()
+        //{
+        //    var movieList = new List<Movie>()
+        //    {
+        //        new Movie { Id=1, ReleaseDate= new DateTime(1989,2,3), Name="Die Hard" },
+        //        new Movie { Id=2,  ReleaseDate= new DateTime(2001,6,29), Name="Shrek" },
+        //        new Movie { Id=3,  ReleaseDate= new DateTime(1985,12,4), Name="Back to the Future" }
+        //    };
 
-            return movieList;
-        }
+        //    return movieList;
+        //}
     }
 }
