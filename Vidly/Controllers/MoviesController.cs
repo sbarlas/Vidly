@@ -103,7 +103,14 @@ namespace Vidly.Controllers
 
             }
 
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch(System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             return RedirectToAction("Index", "Movies");
         }
