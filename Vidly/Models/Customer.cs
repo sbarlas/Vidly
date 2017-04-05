@@ -6,15 +6,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Vidly.Models
 {
+
+    
     public class Customer
     {
         public int Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage ="Please enter customer's name.")]
         [StringLength(255)]
         public string Name { get; set; }
 
         [Display(Name="Date of Birth")]
+        [Min18YearsIfAMember]
         public Nullable<DateTime> DateOfBirth { get; set; }
+        
         [System.ComponentModel.DataAnnotations.Schema.NotMapped]
         public int Age
         {
@@ -36,11 +41,13 @@ namespace Vidly.Models
         }
 
         public bool IsSubscribedToNewsletter { get; set; }
+
         public bool IsActive { get; set; }
 
         public MembershipType MembershipType { get; set; }
 
         [Display(Name = "Membership Type")]
+        [Required]
         public byte MembershipTypeId { get; set; }
     }
 
