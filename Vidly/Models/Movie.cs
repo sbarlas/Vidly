@@ -17,7 +17,7 @@ namespace Vidly.Models
         public DateTime ReleaseDate { get; set; }
 
         [Required]
-        [Display(Name = "Movie Genre")]
+        [Display(Name = "Date Added")]
         public DateTime DateAdded { get; set; }
 
         [Required]
